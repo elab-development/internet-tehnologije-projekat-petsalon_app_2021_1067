@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PretragaUslugaController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -13,6 +14,8 @@ Route::post('/resetPassword', [AuthController::class,'forgotPassword']);
 
 Route::get('/users',[UserController::class,'index']);
 Route::get('/users/{id}',[UserController::class,'show']);
+
+Route::get('/pretragaUslugaPoTezini',[PretragaUslugaController::class,'searchServices']);
 
 //rute za koje mora korisnik da bude autentifikovan - da ima token
 //da li je radnik ili klasican proveravamo u kontrolerima
