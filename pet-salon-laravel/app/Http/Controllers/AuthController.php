@@ -52,7 +52,7 @@ class AuthController extends Controller
         }
 
         if(!Auth::attempt($request->only('email','password'))){
-            return response()->json(['Poruka'=>'Nedozvoljeno'], 401);
+            return response()->json(['Poruka'=>'Nisu dobri parametri za login.'], 401);
         }
 
         $user = User::where('email', $request['email']) -> firstOrFail();
@@ -60,7 +60,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'Poruka' => 'Zdravo,' . $user->name . ' na aplikaciju Salon za pse',
+            'Poruka' => 'Zdravo,' . $user->name . ' dobrodosli na aplikaciju Salon za pse',
             'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
@@ -71,7 +71,7 @@ class AuthController extends Controller
     {   
         $request->validate([
             'email' => 'required',
-            'new_password' => 'required|string|min:8'
+            'new_password' => 'required|string'
         ]);
     
         $user = User::where('email', $request->email)->first();

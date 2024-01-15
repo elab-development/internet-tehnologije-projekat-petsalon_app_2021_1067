@@ -20,11 +20,11 @@ class UserResource extends JsonResource
             'email' => $this->resource->email,
         ];
 
-        if ($this->resource->jeAdmin) {
+        if ($this->resource->is_worker) {
             $data['is_worker'] = 'Ovaj korisnik je radnik u salonu za pse.';
         }
 
-        if (!($this->resource->jeAdmin)) {
+        if (!($this->resource->is_worker)) {
             $data['is_worker'] = 'Ovo je obican korisnik koji koristi usluge salona.';
         }
 
