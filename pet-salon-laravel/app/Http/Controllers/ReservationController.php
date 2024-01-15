@@ -120,6 +120,29 @@ class ReservationController extends Controller
             return response()->json(['Poruka' => 'Status rezervacije je azuriran', 'reservation' => new ReservationResource($reservation)]);
     }
 
+    public function destroy($id)
+    {
+        // Provera da li je korisnik obican klijent (is_worker = false)
+        $is_worker = Auth::user()->is_worker;
+
+        if ($is_worker) {
+            return response()->json(['error' => 'Nedozvoljeno, ovo moze samo klasican korisnik raditi.'], 403);
+        }
+
+        // Pronalazenje rezervacije
+        $reservation = Reservation::findOrFail($id);
+
+        // Provera da li trenutno ulogovani korisnik brise svoju rezervaciju
+        if ($reservation->user_client_id != Auth::id()) {
+            return response()->json(['error' => 'Nemate dozvolu za brisanje tudje rezervacije.'], 403);
+        }
+
+        // Brisanje rezervacije
+        $reservation->delete();
+
+        return response()->json(['Poruka' => 'Uspesno ste obrisali svoju rezervaciju.']);
+    }
+
 
 }
    

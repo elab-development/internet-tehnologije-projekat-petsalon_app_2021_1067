@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::patch('/reservations/{id}', [ReservationController::class,'updateStatus']);
 
+    Route::delete('/reservations/{id}', [ReservationController::class,'destroy']);
+
     Route::post('/logout', [AuthController::class, 'logout']);  
 
 });
