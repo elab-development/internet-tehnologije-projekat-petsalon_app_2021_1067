@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PretragaUslugaController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -21,8 +22,15 @@ Route::get('/pretragaUslugaPoTezini',[PretragaUslugaController::class,'searchSer
 //da li je radnik ili klasican proveravamo u kontrolerima
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
     Route::resource('/services', ServiceController::class);
 
-     Route::post('/logout', [AuthController::class, 'logout']);  
+    Route::post('/reservations', [ReservationController::class,'store']);
+
+    Route::put('/reservations/{id}', [ReservationController::class,'update']);
+
+    Route::patch('/reservations/{id}', [ReservationController::class,'updateStatus']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);  
 
 });
