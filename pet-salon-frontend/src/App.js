@@ -5,20 +5,17 @@ import Navbar from './komponente/Navbar';
 import Pocetna from './komponente/Pocetna';
 import ONama from './komponente/ONama';
 
-
 function App() {
   return (
     <div className="App">
-      
       <BrowserRouter>
-      <Navbar/>
-      <Routes>
-      <Route path="/" element={<Pocetna/>} />
-      <Route path="/o-nama" element={<ONama/>} />
-      </Routes>
-      <Footer/>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Pocetna/>} />
+          <Route path="/o-nama" element={<ONama/>} />
+        </Routes>
+        <Footer/>
       </BrowserRouter>
-      
     </div>
   );
 }
