@@ -11,11 +11,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: aliceblue;
 }
+
 
 .salon-info {
     padding-left: 50px;
     text-align: left;
+    color: aliceblue;
+
+}
+
+.salon-info p{
+    color: aliceblue;
 
 }
 
