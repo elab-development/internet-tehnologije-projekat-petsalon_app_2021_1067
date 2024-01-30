@@ -1,7 +1,9 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './komponente/Footer';
 import Navbar from './komponente/Navbar';
+import Pocetna from './komponente/Pocetna';
+
 
 function App() {
   return (
@@ -9,9 +11,13 @@ function App() {
       
       <BrowserRouter>
       <Navbar/>
+      <Routes>
+      <Route path="/" element={<Pocetna/>} />
       
-      </BrowserRouter>
+      </Routes>
       <Footer/>
+      </BrowserRouter>
+      
     </div>
   );
 }
