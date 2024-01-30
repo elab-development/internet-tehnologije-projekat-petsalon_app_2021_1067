@@ -1,0 +1,47 @@
+.nase-musterije {
+    padding: 20px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .nase-musterije h2 {
+    color: #29354B;
+    font-size: 24px;
+    margin-left: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .nase-musterije ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .nase-musterije li {
+    background-color: #4C8891;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    flex-basis: calc(28% ); 
+    gap: 30px;
+  }
+  
+  .nase-musterije li h3 {
+    color: #A0C8C3;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .nase-musterije li p {
+    color: #ECEBE9;
+    font-size: 16px;
+    margin: 5px 0;
+  }

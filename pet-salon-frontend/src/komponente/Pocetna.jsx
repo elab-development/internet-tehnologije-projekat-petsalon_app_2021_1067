@@ -11,7 +11,7 @@ const Pocetna = () => {
                 const response = await axios.get('https://dog.ceo/api/breeds/image/random/14'); // Dobijamo 3 slike pasa
                 setDogImages(response.data.message);
             } catch (error) {
-                console.error('Error fetching dog images:', error);
+                console.error('Greska u vracanju slika:', error);
             }
         };
         fetchDogImages();

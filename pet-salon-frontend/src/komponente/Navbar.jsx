@@ -15,6 +15,9 @@ const Navbar = () => {
                 <li>
                     <Link to="/o-nama">O nama</Link>
                 </li>
+                <li>
+                    <Link to="/musterije">Nase musterije</Link>
+                </li>
             </ul>
         </nav>
     );

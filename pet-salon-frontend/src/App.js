@@ -5,6 +5,7 @@ import Navbar from './komponente/Navbar';
 import Pocetna from './komponente/Pocetna';
 import ONama from './komponente/ONama';
 import Usluge from './komponente/Usluge';
+import NaseMusterije from './komponente/NaseMusterije';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Pocetna/>} />
           <Route path="/o-nama" element={<ONama/>} />
           <Route path="/usluge" element={<Usluge/>} />
+          <Route path="/musterije" element={<NaseMusterije/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
