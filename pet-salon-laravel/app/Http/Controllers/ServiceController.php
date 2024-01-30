@@ -12,17 +12,12 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        // Provera da li je korisnik  radnik
-        if (Auth::user()->is_worker) {
-            $services = Service::all();
-            return ServiceResource::collection($services);
+       
+        $services = Service::all();
+        return ServiceResource::collection($services);
 
-        } else {
-            // Ako korisnik nije radnik
-            return response()->json(['Poruka' => 'Nemate dozvolu za pristup listi usluga'], 403);
-        }
     }
-
+    
 
     public function show($id)
     {
