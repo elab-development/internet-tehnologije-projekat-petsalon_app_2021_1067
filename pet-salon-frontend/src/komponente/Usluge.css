@@ -54,6 +54,20 @@
     border-bottom: 1px solid #eee;
     padding: 10px 0;
   }
+
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin-right: 5px;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
   
 
  
