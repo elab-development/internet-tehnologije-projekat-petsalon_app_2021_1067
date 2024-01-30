@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './komponente/Footer';
 import Navbar from './komponente/Navbar';
 import Pocetna from './komponente/Pocetna';
+import ONama from './komponente/ONama';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
       <Navbar/>
       <Routes>
       <Route path="/" element={<Pocetna/>} />
-      
+      <Route path="/o-nama" element={<ONama/>} />
       </Routes>
       <Footer/>
       </BrowserRouter>
