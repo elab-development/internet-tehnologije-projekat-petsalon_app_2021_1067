@@ -5,7 +5,6 @@ use App\Http\Controllers\PretragaUslugaController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 //rute kojima svako moze da pristupi
@@ -18,12 +17,14 @@ Route::get('/users/{id}',[UserController::class,'show']);
 
 Route::get('/pretragaUslugaPoTezini',[PretragaUslugaController::class,'searchServices']);
 
+Route::resource('/services', ServiceController::class);
+
 //rute za koje mora korisnik da bude autentifikovan - da ima token
 //da li je radnik ili klasican proveravamo u kontrolerima
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::resource('/services', ServiceController::class);
+   
 
     Route::post('/reservations', [ReservationController::class,'store']);
 
