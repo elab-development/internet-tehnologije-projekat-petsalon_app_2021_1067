@@ -31,7 +31,7 @@
     background-color: #f9f9f9;
   }
   
-  .delete-button {
+  .delete-button, .edit-button {
     background: none;
     border: none;
     color: #d9534f;
@@ -42,6 +42,14 @@
   
   .delete-button:hover {
     color: #c9302c;
+  }
+  
+  .edit-button {
+    color: #5bc0de;
+  }
+  
+  .edit-button:hover {
+    color: #31b0d5;
   }
   
   .toggle-form-button {

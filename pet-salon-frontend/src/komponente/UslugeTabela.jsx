@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { FaTrash } from 'react-icons/fa';  
+import { FaTrash, FaEdit } from 'react-icons/fa';  
 import axios from 'axios';
 import './UslugeTabela.css'; 
 import useUsluge from './kuke/useUsluge';
 import AddUslugaForm from './AddUslugaForm';  
+import EditUslugaForm from './EditUslugaForm';
 
 const UslugeTabela = () => {
   const { usluge, setUsluge, loading, error } = useUsluge('http://127.0.0.1:8000/api/services');
   const [showForm, setShowForm] = useState(false);
+  const [editUsluga, setEditUsluga] = useState(null);
 
   const handleDelete = async (id) => {
     const token = sessionStorage.getItem('access_token');
@@ -17,11 +19,19 @@ const UslugeTabela = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      // Ažuriramo lokalnu memoriju tako što filtriramo obrisanu uslugu
       setUsluge((prevUsluge) => prevUsluge.filter((usluga) => usluga.id !== id));
     } catch (error) {
       console.error("Greška prilikom brisanja usluge:", error);
     }
+  };
+
+  const handleEdit = (usluga) => {
+    setEditUsluga(usluga);
+    setShowForm(false);
+  };
+
+  const closeEditForm = () => {
+    setEditUsluga(null);
   };
 
   if (loading) return <p>Učitavanje...</p>;
@@ -34,6 +44,7 @@ const UslugeTabela = () => {
         {showForm ? 'Zatvori Formu' : 'Dodaj Novu Uslugu'}
       </button>
       {showForm && <AddUslugaForm setUsluge={setUsluge} />}
+      {editUsluga && <EditUslugaForm usluga={editUsluga} setUsluge={setUsluge} closeForm={closeEditForm} />}
       <table>
         <thead>
           <tr>
@@ -54,6 +65,9 @@ const UslugeTabela = () => {
               <td>{usluga.trajanje}</td>
               <td>{usluga.tezina}</td>
               <td>
+                <button onClick={() => handleEdit(usluga)} className="edit-button">
+                  <FaEdit />
+                </button>
                 <button onClick={() => handleDelete(usluga.id)} className="delete-button">
                   <FaTrash />
                 </button>
