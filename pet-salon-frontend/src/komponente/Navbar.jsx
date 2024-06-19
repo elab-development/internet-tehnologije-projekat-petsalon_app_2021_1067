@@ -16,6 +16,12 @@ const Navbar = () => {
                     <Link to="/o-nama">O nama</Link>
                 </li>
                 <li>
+                    <Link to="/login">Login</Link>
+                </li>
+                <li>
+                    <Link to="/register">Register</Link>
+                </li>
+                <li>
                     <Link to="/musterije">Nase musterije</Link>
                 </li>
             </ul>

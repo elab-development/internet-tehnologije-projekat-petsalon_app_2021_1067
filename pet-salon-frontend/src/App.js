@@ -6,6 +6,8 @@ import Pocetna from './komponente/Pocetna';
 import ONama from './komponente/ONama';
 import Usluge from './komponente/Usluge';
 import NaseMusterije from './komponente/NaseMusterije';
+import LoginForm from './komponente/LoginForm';
+import RegisterForm from './komponente/RegisterForm';
 
 function App() {
   return (
@@ -17,6 +19,11 @@ function App() {
           <Route path="/o-nama" element={<ONama/>} />
           <Route path="/usluge" element={<Usluge/>} />
           <Route path="/musterije" element={<NaseMusterije/>} />
+
+          <Route path="/login" element={<LoginForm/>} />
+          <Route path="/register" element={<RegisterForm/>} />
+
+
         </Routes>
         <Footer/>
       </BrowserRouter>
