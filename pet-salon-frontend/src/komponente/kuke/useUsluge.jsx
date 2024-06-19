@@ -20,9 +20,9 @@ const useUsluge = (url) => {
 
     fetchUsluge();
 
-  }, [url]); //  url dependency
+  }, [url]);
 
-  return { usluge, loading, error };
+  return { usluge, setUsluge, loading, error };
 };
 
 export default useUsluge;

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginForm.css';
-const LoginForm = () => {
-    const [email, setEmail] = useState('drolfson@example.com');
+import { useNavigate } from 'react-router-dom';
+
+const LoginForm = ({ setToken }) => {
+    const [email, setEmail] = useState('ananikolic@gmail.com');
     const [password, setPassword] = useState('password');
     const [error, setError] = useState('');
-
+    let navigate= useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -15,13 +17,13 @@ const LoginForm = () => {
                 password
             });
 
-            const { access_token, token_type, user } = response.data;
+            const { access_token, token_type } = response.data;
 
             // Save the token and user information in session storage
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('token_type', token_type);
-          
-
+            setToken(access_token);
+            navigate('/usluge');
             // Optionally, redirect the user or do something else
             console.log('Login successful');
         } catch (error) {

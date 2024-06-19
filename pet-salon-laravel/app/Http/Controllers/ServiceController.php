@@ -34,9 +34,7 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
-       // Provera da li je korisnik radnik
-        if (Auth::user()->is_worker) {
-
+        
             // Validacija za polja koja se unose preko requesta
             $validator = Validator::make($request->all(), [
                 'naziv' => 'required',
@@ -62,16 +60,13 @@ class ServiceController extends Controller
 
             return response()->json(['Poruka' => 'Kreirana je nova usluga', 'service' => new ServiceResource($service)]);
        
-        } else {
-            // Ako korisnik nije radnik
-            return response()->json(['Poruka' => 'Nemate dozvolu za kreiranje usluge'], 403);
-        }
+        
     }
 
     public function update(Request $request, $id)
     {
-        // Provera da li je korisnik radnik
-        if (Auth::user()->is_worker) {
+         
+         
             // Validacija za polja koja se unose preko requesta
             $validator = Validator::make($request->all(), [
                 'naziv' => 'required',
@@ -96,26 +91,18 @@ class ServiceController extends Controller
             $service->save();
 
             return response()->json(['Poruka' => 'Azurirana je izabrana usluga', 'service' => new ServiceResource($service)]);
-        
-        } else {
-            // Ako korisnik nije radnik
-            return response()->json(['Poruka' => 'Nemate dozvolu za ažuriranje usluge'], 403);
-        }
+       
     }
 
     public function destroy($id)
     {
-        // Provera da li je korisnik radnik
-        if (Auth::user()->is_worker) {
+         
 
             $service = Service::findOrFail($id);
             $service->delete();
 
             return response()->json(['Poruka' => 'Obrisana je izabrana usluga']);
 
-        } else {
-            // Ako korisnik nije radnik
-            return response()->json(['Poruka' => 'Nemate dozvolu za brisanje usluge'], 403);
-        }
+        
     }
 }
