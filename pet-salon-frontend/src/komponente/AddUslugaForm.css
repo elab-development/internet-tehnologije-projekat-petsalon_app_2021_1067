@@ -1,0 +1,52 @@
+.add-usluga-form {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ECEBE9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .add-usluga-form h2 {
+    color: #333;
+  }
+  
+  .add-usluga-form .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .add-usluga-form form div {
+    margin-bottom: 15px;
+  }
+  
+  .add-usluga-form label {
+    display: block;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .add-usluga-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .add-usluga-form button {
+    background-color: #4C8891;
+    color: #ECEBE9;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-usluga-form button:hover {
+    background-color: #29354B;
+  }
+  

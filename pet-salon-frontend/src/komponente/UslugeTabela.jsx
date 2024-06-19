@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';  
 import axios from 'axios';
 import './UslugeTabela.css'; 
 import useUsluge from './kuke/useUsluge';
+import AddUslugaForm from './AddUslugaForm';  
 
 const UslugeTabela = () => {
   const { usluge, setUsluge, loading, error } = useUsluge('http://127.0.0.1:8000/api/services');
+  const [showForm, setShowForm] = useState(false);
 
   const handleDelete = async (id) => {
     const token = sessionStorage.getItem('access_token');
@@ -28,6 +30,10 @@ const UslugeTabela = () => {
   return (
     <div className="usluge-tabela">
       <h2>Lista Usluga</h2>
+      <button onClick={() => setShowForm(!showForm)} className="toggle-form-button">
+        {showForm ? 'Zatvori Formu' : 'Dodaj Novu Uslugu'}
+      </button>
+      {showForm && <AddUslugaForm setUsluge={setUsluge} />}
       <table>
         <thead>
           <tr>
