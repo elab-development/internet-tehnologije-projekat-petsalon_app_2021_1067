@@ -1,12 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Navbar.css';
 
 const Navbar = ({ token, setToken }) => {
-    const handleLogout = () => {
-        sessionStorage.removeItem('access_token');
-        sessionStorage.removeItem('token_type');
-        setToken(null);
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            const token = sessionStorage.getItem('access_token');
+            const tokenType = sessionStorage.getItem('token_type');
+            
+            await axios.post('http://127.0.0.1:8000/api/logout', {}, {
+                headers: {
+                    'Authorization': `${tokenType} ${token}`
+                }
+            }); 
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('token_type');
+            setToken(null);
+            navigate('/');
+        } catch (error) {
+            console.error('Logout failed:', error);
+        }
     };
 
     return (
@@ -22,7 +38,7 @@ const Navbar = ({ token, setToken }) => {
                     <Link to="/o-nama">O nama</Link>
                 </li>
                 <li>
-                    <Link to="/musterije">Nase musterije</Link>
+                    <Link to="/musterije">Naše mušterije</Link>
                 </li>
                 {token ? (
                     <li>

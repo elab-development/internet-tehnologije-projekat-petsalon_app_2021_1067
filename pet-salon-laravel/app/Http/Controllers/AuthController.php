@@ -63,6 +63,7 @@ class AuthController extends Controller
             'Poruka' => 'Zdravo,' . $user->name . ' dobrodosli na aplikaciju Salon za pse',
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'is_worker'=>$user->is_worker,
         ]);
     }
 

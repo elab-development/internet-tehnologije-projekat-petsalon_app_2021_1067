@@ -23,8 +23,15 @@ const LoginForm = ({ setToken }) => {
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('token_type', token_type);
             setToken(access_token);
-            navigate('/usluge');
-            // Optionally, redirect the user or do something else
+            if(response.data.is_worker==1){
+                navigate('/admin')
+            }else{
+                navigate('/usluge');
+
+            }
+            
+
+
             console.log('Login successful');
         } catch (error) {
             setError('Nisu dobri parametri za login.');
