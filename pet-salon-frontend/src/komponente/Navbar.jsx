@@ -32,18 +32,20 @@ const Navbar = ({ token, setToken }) => {
                     <Link to="/">Početna</Link>
                 </li>
                 <li>
-                    <Link to="/usluge">Usluge</Link>
-                </li>
-                <li>
                     <Link to="/o-nama">O nama</Link>
                 </li>
                 <li>
                     <Link to="/musterije">Naše mušterije</Link>
                 </li>
                 {token ? (
-                    <li>
-                        <button onClick={handleLogout}>Logout</button>
-                    </li>
+                    <>
+                        <li>
+                            <Link to="/usluge">Usluge</Link>
+                        </li>
+                        <li>
+                            <button onClick={handleLogout}>Logout</button>
+                        </li>
+                    </>
                 ) : (
                     <>
                         <li>

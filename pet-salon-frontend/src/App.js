@@ -10,6 +10,7 @@ import NaseMusterije from './komponente/NaseMusterije';
 import LoginForm from './komponente/LoginForm';
 import RegisterForm from './komponente/RegisterForm';
 import UslugeTabela from './komponente/UslugeTabela';
+import MusterijeTabela from './komponente/MusterijeTabela';
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('access_token'));
@@ -28,7 +29,9 @@ function App() {
           <Route path="/login" element={<LoginForm setToken={setToken} />} />
           <Route path="/register" element={<RegisterForm />} />
 
-          <Route path="/admin" element={<UslugeTabela />} />
+          <Route path="/admin/usluge" element={<UslugeTabela />} />
+          <Route path="/admin/musterije" element={<MusterijeTabela />} />
+
 
         </Routes>
         <Footer />

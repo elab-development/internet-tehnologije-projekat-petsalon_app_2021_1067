@@ -8,8 +8,15 @@ const NaseMusterije = () => {
   useEffect(() => {
     const fetchBreeds = async () => {
       try {
-        const response = await axios.get('https://api.thedogapi.com/v1/breeds');
-        setBreeds(response.data.slice(0, 9));
+        const storedBreeds = sessionStorage.getItem('breeds');
+        if (storedBreeds) {
+          setBreeds(JSON.parse(storedBreeds));
+        } else {
+          const response = await axios.get('https://api.thedogapi.com/v1/breeds');
+          const breedsData = response.data.slice(0, 9);
+          setBreeds(breedsData);
+          sessionStorage.setItem('breeds', JSON.stringify(breedsData));
+        }
       } catch (error) {
         console.error('Greska u vracanju rasa pasa:', error);
       }

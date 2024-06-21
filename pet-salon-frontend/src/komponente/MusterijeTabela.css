@@ -1,0 +1,52 @@
+.musterije-tabela {
+    padding: 20px;
+}
+
+.musterije-tabela h2,
+.musterije-tabela h3 {
+    text-align: center;
+}
+
+.musterije-tabela table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.musterije-tabela th,
+.musterije-tabela td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.musterije-tabela th {
+    background-color: #f2f2f2;
+}
+
+.musterije-tabela form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.musterije-tabela input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.musterije-tabela button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.musterije-tabela button:hover {
+    background-color: #45a049;
+}

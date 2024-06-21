@@ -17,14 +17,12 @@ const LoginForm = ({ setToken }) => {
                 password
             });
 
-            const { access_token, token_type } = response.data;
-
-            // Save the token and user information in session storage
+            const { access_token, token_type } = response.data; 
             sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('token_type', token_type);
             setToken(access_token);
             if(response.data.is_worker==1){
-                navigate('/admin')
+                navigate('/admin/usluge')
             }else{
                 navigate('/usluge');
 
