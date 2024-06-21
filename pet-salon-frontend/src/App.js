@@ -14,25 +14,21 @@ import MusterijeTabela from './komponente/MusterijeTabela';
 
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem('access_token'));
+  const [isWorker, setIsWorker] = useState(sessionStorage.getItem('is_worker') === 'true');
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar token={token} setToken={setToken} />
+        <Navbar token={token} setToken={setToken} isWorker={isWorker} setIsWorker={setIsWorker} />
         <Routes>
           <Route path="/" element={<Pocetna />} />
           <Route path="/o-nama" element={<ONama />} />
           <Route path="/usluge" element={<Usluge />} />
           <Route path="/musterije" element={<NaseMusterije />} />
-
-
-          <Route path="/login" element={<LoginForm setToken={setToken} />} />
+          <Route path="/login" element={<LoginForm setToken={setToken} setIsWorker={setIsWorker} />} />
           <Route path="/register" element={<RegisterForm />} />
-
           <Route path="/admin/usluge" element={<UslugeTabela />} />
           <Route path="/admin/musterije" element={<MusterijeTabela />} />
-
-
         </Routes>
         <Footer />
       </BrowserRouter>

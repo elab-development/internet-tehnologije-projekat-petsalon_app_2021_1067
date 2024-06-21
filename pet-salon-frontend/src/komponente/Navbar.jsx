@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Navbar.css';
 
-const Navbar = ({ token, setToken }) => {
+const Navbar = ({ token, setToken, isWorker, setIsWorker }) => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -18,7 +18,9 @@ const Navbar = ({ token, setToken }) => {
             }); 
             sessionStorage.removeItem('access_token');
             sessionStorage.removeItem('token_type');
+            sessionStorage.removeItem('is_worker');
             setToken(null);
+            setIsWorker(false);
             navigate('/');
         } catch (error) {
             console.error('Logout failed:', error);
@@ -42,6 +44,16 @@ const Navbar = ({ token, setToken }) => {
                         <li>
                             <Link to="/usluge">Usluge</Link>
                         </li>
+                        {isWorker && (
+                            <>
+                                <li>
+                                    <Link to="/admin/usluge">Admin Usluge</Link>
+                                </li>
+                                <li>
+                                    <Link to="/admin/musterije">Admin Mušterije</Link>
+                                </li>
+                            </>
+                        )}
                         <li>
                             <button onClick={handleLogout}>Logout</button>
                         </li>
